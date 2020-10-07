@@ -1,19 +1,3 @@
-<?php
-
-if($_POST["submit"]) {
-    $recipient="acg2176@columbia.edu";
-    $firstName=$_POST["firstName"];
-    $lastName=$_POST["lastName"];
-    $senderEmail=$_POST["senderEmail"];
-    $subject=$_POST["subject"];
-    $message=$_POST["message"];
-    $mailBody ="Name: $firstName\n$lastName\nEmail:$senderEmail\n\n$message";
-
-    mail($recipient, $subject, $mailBody, "From:$firstName $lastName <$senderEmail>");
-
-    $thankYou="<p>Thank you! Your message has been sent.</p>";"
-  }
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -216,6 +200,13 @@ if($_POST["submit"]) {
           </div>
         </div>
 
+        <div id="posts" class="row no-gutter">
+          <ul>
+          </ul>
+
+
+        </div>
+
         
         <!-- <div id="posts" class="row no-gutter">
           <div class="item web col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
@@ -330,8 +321,7 @@ if($_POST["submit"]) {
             <h2 class="section-title text-center mb-5">Contact Me</h2>
           </div>
         </div>
-        <?=$thankYou ?>
-        <form method="post" action="index.php" class="form">
+        <form method="post" action="contact.php" class="form">
           <div class="row mb-4">
             <div class="form-group col-6">
               <input type="text" name="firstName" class="form-control" placeholder="First name">
