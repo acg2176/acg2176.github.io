@@ -1,4 +1,20 @@
-<!doctype html>
+<?php
+
+if($_POST["submit"]) {
+    $recipient="acg2176@columbia.edu";
+    $firstName=$_POST["firstName"];
+    $lastName=$_POST["lastName"];
+    $senderEmail=$_POST["senderEmail"];
+    $subject=$_POST["subject"];
+    $message=$_POST["message"];
+    $mailBody ="Name: $firstName\n$lastName\nEmail:$senderEmail\n\n$message";
+
+    mail($recipient, $subject, $mailBody, "From:$firstName $lastName <$senderEmail>");
+
+    $thankYou="<p>Thank you! Your message has been sent.</p>";"
+  }
+?>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Anna Guerrero</title>
@@ -196,7 +212,7 @@
       <div class="container">
         <div class="row mb-5">
           <div class="col-12 position-relative">
-            <h2 class="section-title text-center mb-5">My Resume</h2>
+            <h2 class="section-title text-center mb-5">My Portfolio</h2>
           </div>
         </div>
 
@@ -279,7 +295,7 @@
       <div class="container">
         <div class="row">
           <div class="col-12 mb-5 position-relative">
-            <h2 class="section-title text-center">My Portfolio</h2>
+            <h2 class="section-title text-center">My Resume</h2>
           </div>
           <!--<div class="col-6 col-sm-6 col-md-4 col-lg-4 text-center">
             <img src="images/logo_1.jpg" alt="Image" class="img-fluid">
@@ -314,37 +330,38 @@
             <h2 class="section-title text-center mb-5">Contact Me</h2>
           </div>
         </div>
-        <form action="#" class="form">
+        <?=$thankYou ?>
+        <form method="post" action="index.php" class="form">
           <div class="row mb-4">
             <div class="form-group col-6">
-              <input type="text" class="form-control" placeholder="First name">
+              <input type="text" name="firstName" class="form-control" placeholder="First name">
             </div>
             <div class="form-group col-6">
-              <input type="text" class="form-control" placeholder="Last name">
+              <input type="text" name="lastName" class="form-control" placeholder="Last name">
             </div>
           </div>
 
           <div class="row mb-4">
             <div class="form-group col-12">
-              <input type="email" class="form-control" placeholder="Email address">
+              <input type="email" name="senderEmail" class="form-control" placeholder="Email address">
             </div>
           </div>
 
           <div class="row mb-4">
             <div class="form-group col-12">
-              <input type="text" class="form-control" placeholder="Subject of the message">
+              <input type="text" name="subject" class="form-control" placeholder="Subject of the message">
             </div>
           </div>
 
           <div class="row mb-4">
             <div class="form-group col-12">
-              <textarea name="" id="" cols="30" rows="10" class="form-control" placeholder="Type your message here.."></textarea>
+              <textarea name="message" id="" cols="30" rows="10" class="form-control" placeholder="Type your message here.."></textarea>
             </div>
           </div>
 
           <div class="row">
             <div class="col-md-6">
-              <input type="submit" class="btn btn-primary" value="Send Message">
+              <input type="submit" name="submit" class="btn btn-primary" value="Send Message">
             </div>
           </div>
           
